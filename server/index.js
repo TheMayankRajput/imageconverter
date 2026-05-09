@@ -14,6 +14,7 @@ const corsOptions = {
   origin: [
     'http://localhost:3000',
     'http://localhost:5000',
+    'https://imageconverter-neon.vercel.app',
     'https://*.vercel.app',
     'https://*.netlify.app',
     'https://*.railway.app',
