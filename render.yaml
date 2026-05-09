@@ -1,0 +1,15 @@
+# Render.com deployment configuration
+# This file helps Render automatically configure your backend
+
+services:
+  - type: web
+    name: img-converter-api
+    env: node
+    plan: free
+    buildCommand: cd server && npm install
+    startCommand: cd server && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000

@@ -3,6 +3,9 @@ import axios from 'axios';
 import './ImageConverter.css';
 
 const ImageConverter = () => {
+  // Use environment variable for API URL (production) or fallback to localhost (development)
+  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+  
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [targetFormat, setTargetFormat] = useState('png');
   const [loading, setLoading] = useState(false);
@@ -46,7 +49,7 @@ const ImageConverter = () => {
         setProgress((prev) => (prev < 90 ? prev + Math.random() * 20 : prev));
       }, 200);
 
-      const response = await axios.post('/api/convert', formData, {
+      const response = await axios.post(`${API_URL}/api/convert`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
 
@@ -68,7 +71,7 @@ const ImageConverter = () => {
   const handleDownload = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`/api/download/${batchId}`, {
+      const response = await axios.get(`${API_URL}/api/download/${batchId}`, {
         responseType: 'blob',
       });
 
