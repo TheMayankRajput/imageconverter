@@ -1,0 +1,14 @@
+{
+  "name": "image-converter",
+  "version": "1.0.0",
+  "description": "Batch image converter - convert multiple images to any format",
+  "scripts": {
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd server && node index.js",
+    "client": "cd client && npm start",
+    "install-all": "npm install && cd server && npm install && cd ../client && npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}
